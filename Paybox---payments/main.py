@@ -1,9 +1,13 @@
 import paramiko
 import pandas as pd
+import os
 
 from config import *
 from utils.paybox_payments_schema import *
-from utils.helper_functions import *
+from utils.functions import *
+
+email_address = os.environ['email_address']
+email_password = os.environ['email_password']
 
 # Configurer le logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -18,7 +22,7 @@ try:
 
 except Exception as error:
     send_email(email_address, email_password)
-    logger.error(f"Erreur lors de l'établissement de la connexion SFTP : {error_message}")
+    logger.error(f"Erreur lors de l'établissement de la connexion SFTP : {error}")
 
 transport = client.get_transport()
 sftp = paramiko.SFTPClient.from_transport(transport)

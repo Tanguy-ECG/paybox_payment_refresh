@@ -5,8 +5,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+import logging
 
 def send_email(email_address, email_password):
+    error = Exception
     error_message = str(error)
     # Enregistrement de l'erreur dans un fichier
     logging.basicConfig(filename='error.log', level=logging.ERROR)
