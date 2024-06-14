@@ -1,13 +1,14 @@
+import os
 import paramiko
 import pandas as pd
-import os
 
 from config import *
-from utils.paybox_payments_schema import *
 from utils.functions import *
+from utils.paybox_payments_schema import *
 
-email_address = os.environ['email_address']
-email_password = os.environ['email_password']
+
+email_address = os.getenv("email_address") #os.environ['email_address']
+email_password = os.getenv("email_password") #os.environ['email_password']
 
 # Configurer le logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -16,8 +17,11 @@ logger = logging.getLogger()
 # Établir une connexion SFTP en utilisant une clé privée (DSA)
 try:
     client = paramiko.SSHClient()
+    print("valid 1")
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    print("valid 2")
     client.connect(hostname=FTP_URL, port=FTP_PORT, username=FTP_USER, key_filename=private_key_path)
+    print("valid 3")
     logger.info("Connexion SFTP établie avec succès.")
 
 except Exception as error:

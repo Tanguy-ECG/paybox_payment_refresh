@@ -11,18 +11,18 @@ from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:/Users/mpenicaud/Documents/Credentials/Google/Sandbox_service_account_manon.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:/Users/tminot/Documents/Credentials/Google/ecg-big-data-sandbox_tanguy.json'
 
 load_dotenv()
 
 ## GOOGLE UTILITIES
+key_path = 'C:/Users/tminot/Documents/Credentials/Google/ecg-big-data-sandbox_tanguy.json'
 
 # Create logger client
 try:
     log_client = cloudlogging.Client()
  
 except:
-    key_path = 'C:/Users/mpenicaud/Documents/Credentials/Google/Sandbox_service_account_manon.json'
     credentials = service_account.Credentials.from_service_account_file(
     key_path, scopes = ["https://www.googleapis.com/auth/cloud-platform"],
     )
@@ -37,7 +37,6 @@ finally:
 try:
     storage_client = storage.Client()
 except:
-    key_path = 'C:/Users/mpenicaud/Documents/Credentials/Google/Sandbox_service_account_manon.json'
     credentials = service_account.Credentials.from_service_account_file(
     key_path, scopes = ["https://www.googleapis.com/auth/cloud-platform"],
     )
@@ -47,7 +46,6 @@ except:
 try:
     bigquery_client = bigquery.Client()
 except:
-    key_path = 'C:/Users/mpenicaud/Documents/Credentials/Google/Sandbox_service_account_manon.json'
     credentials = service_account.Credentials.from_service_account_file(
     key_path, scopes = ["https://www.googleapis.com/auth/cloud-platform"],
     )

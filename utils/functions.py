@@ -18,7 +18,7 @@ def send_email(email_address, email_password):
 
     # Envoi d'un e-mail pour notifier l'erreur
     try:
-        send_to_email = ['manonpenicaud@homair.com']
+        send_to_email = ['tanguyminot@homair.com']
         subject = '[FAIL] Paybox payments - ' + error_message
 
         msg = MIMEText("L'erreur suivante est survenue pendant l'exécution du script :\n\n" + error_message)
